@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firewall Hero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background-animation"></div>
+    
+    <div id="game-container">
+        <!-- HUD: Información del Jugador -->
+        <div id="hud" class="hidden">
+            <div class="hud-item"><span class="hud-label">VIDAS</span><span id="hud-lives" class="hud-value">3</span></div>
+            <div class="hud-item"><span class="hud-label">NIVEL</span><span class="hud-value"><span id="hud-level">1</span>/10</span></div>
+            <div class="hud-item"><span class="hud-label">OBJETO</span><span id="hud-items" class="hud-value highlight">Ninguno</span></div>
+        </div>
+
+        <!-- Pantalla de Inicio -->
+        <div id="screen-start" class="screen active glass-panel scrollable-screen">
+            <div class="logo-container">
+                <h1 class="glitch-text" data-text="FIREWALL_HERO">FIREWALL_HERO</h1>
+                <div class="subtitle">SISTEMA DE INFILTRACIÓN ACTIVO</div>
+            </div>
+            
+            <div class="instructions-box">
+                <h3>📋 OBJETIVO DEL SISTEMA</h3>
+                <p>Eres un bit solitario navegando a través de directorios encriptados. Tu propósito es <strong>superar 10 nodos de seguridad</strong> en el mapa topológico para infiltrarte en el Mainframe.</p>
+                
+                <h3>🔍 CÓMO PROCEDER</h3>
+                    <li><strong>❓ Trivia:</strong> Responde preguntas de informática antes de que el firewall (tiempo) te alcance.</li>
+                    <li><strong>🛡️ Refugio:</strong> Clústers inactivos donde puedes descansar y ganar 1 vida extra.</li>
+                    <li><strong>📦 Objeto:</strong> Encuentra parches de seguridad que te salvarán de un error fatal en una trivia.</li>
+                </ul>
+                <p class="warning-text">⚠️ <em>¡Elige bien tu ruta en el mapa y ten cuidado, si tus vidas llegan a 0 serás borrado del sistema!</em></p>
+            </div>
+
+            <button id="btn-start" class="btn primary glow-effect mt-4">INICIAR CONEXIÓN</button>
+        </div>
+
+        <!-- Pantalla del Mapa -->
+        <div id="screen-map" class="screen hidden glass-panel">
+            <h2 class="screen-title">Topología de Red</h2>
+            <p class="map-instruction">Selecciona el siguiente nodo de acceso.</p>
+            <div id="map-container">
+                <!-- Los nodos se generarán dinámicamente aquí -->
+            </div>
+        </div>
+
+        <!-- Pantalla de Evento: Trivia -->
+        <div id="screen-trivia" class="screen hidden glass-panel">
+            <h2 class="screen-title" id="trivia-title">INTERCEPCIÓN DE DATOS</h2>
+            <div class="timer-container">
+                <div class="timer-bar"><div id="trivia-timer" class="timer-fill"></div></div>
+            </div>
+            <p id="trivia-question" class="question-text">Analizando paquetes de datos...</p>
+            <div class="options-grid" id="trivia-options">
+                <!-- Botones de opciones inyectados por JS -->
+            </div>
+        </div>
+
+        <!-- Pantalla de Evento: Objeto -->
+        <div id="screen-item" class="screen hidden glass-panel text-center">
+            <h2 class="screen-title text-success">ACCESO CONCEDIDO</h2>
+            <div class="item-icon pulse">📦</div>
+            <h3 class="item-name" id="item-name">Paquete de Recuperación</h3>
+            <p id="item-description" class="item-desc">Obtienes un parche de seguridad que te salvará de un error crítico en una trivia.</p>
+            <button class="btn secondary mt-4" id="btn-item-continue">CONTINUAR NAVEGACIÓN</button>
+        </div>
+
+        <!-- Pantalla de Evento: Refugio -->
+        <div id="screen-refuge" class="screen hidden glass-panel text-center">
+            <h2 class="screen-title text-info">ZONA SEGURA</h2>
+            <div class="refuge-icon float">🛡️</div>
+            <p class="refuge-desc">Has encontrado un clúster inactivo. Tu bit descansa y recupera integridad estructural.</p>
+            <p class="stat-gain text-info">+1 Oportunidad (Vida)</p>
+            <button class="btn secondary mt-4" id="btn-refuge-continue">REANUDAR VIAJE</button>
+
+
+        <!-- Pantalla de Game Over / Victoria -->
+        <div id="screen-end" class="screen hidden glass-panel text-center">
+            <h1 id="end-title" class="end-title">CONEXIÓN PERDIDA</h1>
+            <p id="end-message" class="end-message">Tus datos han sido corrompidos por el Firewall.</p>
+            <button id="btn-restart" class="btn primary glow-effect mt-4">REINTENTAR CONEXIÓN</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
