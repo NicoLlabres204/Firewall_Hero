@@ -12,18 +12,7 @@ const Model = {
         triviaTimeLeft: 15
     },
 
-    TRIVIA_QUESTIONS: [
-        { q: "¿Qué protocolo se utiliza para transferir páginas web?", options: ["HTTP", "FTP", "SMTP", "SSH"], correct: 0 },
-        { q: "¿Qué significa las siglas RAM?", options: ["Read Access Memory", "Random Access Memory", "Run All Modules", "Real Allocation Memory"], correct: 1 },
-        { q: "¿Cuál es el puerto estándar para HTTPS?", options: ["80", "21", "443", "22"], correct: 2 },
-        { q: "¿Qué lenguaje se usa habitualmente para bases de datos relacionales?", options: ["Python", "Java", "SQL", "C++"], correct: 2 },
-        { q: "¿Qué tipo de malware secuestra archivos y pide un rescate?", options: ["Spyware", "Troyano", "Ransomware", "Gusano"], correct: 2 },
-        { q: "¿Qué comando en Linux lista el contenido de un directorio?", options: ["cd", "ls", "pwd", "mkdir"], correct: 1 },
-        { q: "¿Qué significa CSS?", options: ["Cascading Style Sheets", "Computer Style System", "Creative Styling System", "Coded Style Source"], correct: 0 },
-        { q: "¿Cuál es una dirección IP de loopback (localhost)?", options: ["192.168.1.1", "127.0.0.1", "10.0.0.0", "255.255.255.255"], correct: 1 },
-        { q: "¿Qué hace un servidor DNS?", options: ["Almacena bases de datos", "Traduce dominios a IPs", "Bloquea virus", "Acelera el internet"], correct: 1 },
-        { q: "¿Cuál de estos no es un sistema operativo?", options: ["Linux", "Windows", "Oracle", "macOS"], correct: 2 }
-    ],
+    TRIVIA_QUESTIONS: [],
 
     NODE_TYPES: {
         TRIVIA: { id: 'trivia', icon: '❓', chance: 0.6 },
@@ -316,7 +305,22 @@ const View = {
 const Controller = {
     triviaTimerInterval: null,
 
-    init() {
+    async init() {
+        try {
+            const response = await fetch('trivia.json');
+            if (response.ok) {
+                Model.TRIVIA_QUESTIONS = await response.json();
+            } else {
+                console.warn('Error fetching trivia.json:', response.status);
+            }
+        } catch (error) {
+            console.error('Error cargando trivia.json:', error);
+            // Fallback in case of CORS error when opening index.html from file://
+            Model.TRIVIA_QUESTIONS = [
+                { q: "Error de CORS: Por favor, abre el juego usando un servidor local (ej. Live Server).", options: ["OK", "Entendido", "Ayuda", "Salir"], correct: 0 }
+            ];
+        }
+        
         View.init();
         this.bindEvents();
     },
