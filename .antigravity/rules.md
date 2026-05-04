@@ -17,8 +17,11 @@ Cada pantalla tendrá uno de los siguientes mecanismos:
 - REFUGIO: Podrá descansar y conseguir una oportunidad más.
 - MINI-JUEGO: Podrá jugar a un mini-juego que le permita ganar dos oportunidades más (o un objeto de mejor calidad).
 
-## 3. Distribución del contenido:
+## 3. Apartado visual:
 
-El archivo de "script.js" contendrá la lógica del juego.
-El archivo de "style.css" contendrá los estilos del juego.
-El archivo de "index.html" contendrá la estructura del juego.
+El juego se mostrará como si fuera un documento de google sheets (De tal manera que en móvil sea perfectamente adaptable). El fondo de los lados será de color negro y la sección central (La que simula ser una hoja) será de color verde digital. La estructura visual se distribuye en cuadrados simulando ser carpetas de escritorio y su contenido variará dependiendo de la casilla en la que se encuentre.
+Nada más abrir la aplicación, el jugador se encontrará en el menú principal, que simulará ser la página de inicio del explorador. Aquí podremos pulsar entrar para iniciar el juego. Seguidamente, se mostrará el inicio del mapa y un punto representando al jugador. Éste podrá elegir qué camino podrá tomar (De nuevo, del mismo estilo que el juego "Inscryption"). Cuando un jugador entre en una casilla, se abrirá una ventana que mostrará el contenido de esa casilla (Ya sea un trivia, un objeto, un refugio o un mini-juego). Una vez se resuelva, se cerrará y volverá a la pantalla del mapa, donde el jugador podrá seguir avanzando a la bifurcación o camino siguiente.
+
+## 4. Oportunidades y vidas:
+
+Los jugadores empiezan con 3 oportunidades. En caso de llegar a cero, el jugador deberá comenzar de nuevo.
