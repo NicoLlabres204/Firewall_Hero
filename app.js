@@ -119,10 +119,7 @@ const View = {
                 end: document.getElementById('screen-end')
             },
             hud: {
-                container: document.getElementById('hud'),
-                lives: document.getElementById('hud-lives'),
-                level: document.getElementById('hud-level'),
-                items: document.getElementById('hud-items')
+                container: document.getElementById('hud')
             },
             mapContainer: document.getElementById('map-container')
         };
@@ -142,10 +139,8 @@ const View = {
     },
 
     updateHUD(state) {
-        this.elements.hud.lives.textContent = state.lives;
-        this.elements.hud.level.textContent = state.level;
-        this.elements.hud.items.textContent = state.item ? state.item : 'Ninguno';
-        this.elements.hud.items.className = state.item ? 'hud-value highlight' : 'hud-value';
+        // Usa el componente puro
+        this.elements.hud.container.innerHTML = Components.HUDComponent(state);
         this.elements.hud.container.classList.remove('hidden');
     },
 
@@ -155,18 +150,16 @@ const View = {
 
     showGameOver(isWin) {
         this.hideHUD();
-        const title = document.getElementById('end-title');
-        const msg = document.getElementById('end-message');
-
-        if (isWin) {
-            title.textContent = "ACCESO CONCEDIDO";
-            title.className = "end-title text-success";
-            msg.textContent = "Has hackeado el Mainframe con éxito.";
-        } else {
-            title.textContent = "CONEXIÓN PERDIDA";
-            title.className = "end-title text-danger";
-            msg.textContent = "Tus datos han sido corrompidos por el Firewall.";
+        const screenEnd = this.elements.screens.end;
+        // Usa el componente puro
+        screenEnd.innerHTML = Components.GameOverComponent(isWin);
+        
+        // Reasignamos el evento porque el botón fue re-creado por innerHTML
+        const btnRestart = document.getElementById('btn-restart');
+        if(btnRestart) {
+            btnRestart.onclick = () => Controller.startGame();
         }
+        
         this.showScreen('end');
     },
 
@@ -177,20 +170,20 @@ const View = {
         // Esto permite un scroll bottom-up con CSS column sin recortes en la parte superior.
         for (let i = mapTree.length - 1; i >= 0; i--) {
             const row = mapTree[i];
-            const rowEl = document.createElement('div');
-            rowEl.className = 'map-row';
-            rowEl.dataset.row = i;
-
-            row.forEach(node => {
-                const nodeEl = document.createElement('div');
-                nodeEl.className = 'map-node';
-                nodeEl.id = `node-${node.id}`;
-                nodeEl.textContent = node.type.icon;
-                nodeEl.onclick = () => clickHandler(node);
-                rowEl.appendChild(nodeEl);
-            });
-            this.elements.mapContainer.appendChild(rowEl);
+            // Usar el componente puro
+            const rowHtml = Components.MapRowComponent(row, i);
+            this.elements.mapContainer.insertAdjacentHTML('beforeend', rowHtml);
         }
+
+        // Delegación de eventos para los nodos generados
+        this.elements.mapContainer.onclick = (e) => {
+            const nodeEl = e.target.closest('.map-node');
+            if (nodeEl) {
+                const r = parseInt(nodeEl.dataset.row);
+                const c = parseInt(nodeEl.dataset.col);
+                clickHandler(Model.state.mapTree[r][c]);
+            }
+        };
     },
 
     drawMapLines(mapTree, maxLevel) {
@@ -264,15 +257,20 @@ const View = {
     renderTrivia(qData, answerHandler) {
         document.getElementById('trivia-question').textContent = qData.q;
         const optionsContainer = document.getElementById('trivia-options');
-        optionsContainer.innerHTML = '';
+        
+        // Uso del componente puro
+        optionsContainer.innerHTML = Components.TriviaOptionsComponent(qData.options);
 
-        qData.options.forEach((opt, idx) => {
-            const btn = document.createElement('button');
-            btn.className = 'option-btn';
-            btn.textContent = opt;
-            btn.onclick = () => answerHandler(btn, idx, qData.correct);
-            optionsContainer.appendChild(btn);
-        });
+        // Delegación de eventos
+        optionsContainer.onclick = (e) => {
+            const btn = e.target.closest('.option-btn');
+            if (btn) {
+                const idx = parseInt(btn.dataset.idx);
+                // Prevenir clics múltiples
+                optionsContainer.onclick = null; 
+                answerHandler(btn, idx, qData.correct);
+            }
+        };
     },
 
     updateTriviaTimer(pct) {
@@ -285,7 +283,6 @@ const View = {
 
     showTriviaResult(btn, isCorrect, correctIdx) {
         const buttons = document.querySelectorAll('.option-btn');
-        buttons.forEach(b => b.onclick = null); // Desactivar clicks
         if (isCorrect) {
             btn.classList.add('correct');
         } else {
@@ -327,8 +324,8 @@ const Controller = {
 
     bindEvents() {
         document.getElementById('btn-start').addEventListener('click', () => this.startGame());
-        document.getElementById('btn-restart').addEventListener('click', () => this.startGame());
-
+        // El btn-restart se bindeará dinámicamente porque ahora se genera desde el componente puro
+        
         document.getElementById('btn-item-continue').addEventListener('click', () => this.returnToMap());
         document.getElementById('btn-refuge-continue').addEventListener('click', () => this.returnToMap());
     },
@@ -404,6 +401,8 @@ const Controller = {
     },
 
     handleTriviaTimeout(correctIdx) {
+        const optionsContainer = document.getElementById('trivia-options');
+        optionsContainer.onclick = null; // Disable clicks
         View.showTriviaResult(null, false, correctIdx);
         View.setTriviaTimeoutMsg();
         this.processDamage();
