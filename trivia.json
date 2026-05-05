@@ -1,0 +1,242 @@
+[
+    {
+        "q": "¿Qué protocolo se utiliza para transferir páginas web?",
+        "options": [
+            "HTTP",
+            "FTP",
+            "SMTP",
+            "SSH"
+        ],
+        "correct": 0
+    },
+    {
+        "q": "¿Qué significa las siglas RAM?",
+        "options": [
+            "Read Access Memory",
+            "Random Access Memory",
+            "Run All Modules",
+            "Real Allocation Memory"
+        ],
+        "correct": 1
+    },
+    {
+        "q": "¿Cuál es el puerto estándar para HTTPS?",
+        "options": [
+            "80",
+            "21",
+            "443",
+            "22"
+        ],
+        "correct": 2
+    },
+    {
+        "q": "¿Qué lenguaje se usa habitualmente para bases de datos relacionales?",
+        "options": [
+            "Python",
+            "Java",
+            "SQL",
+            "C++"
+        ],
+        "correct": 2
+    },
+    {
+        "q": "¿Qué tipo de malware secuestra archivos y pide un rescate?",
+        "options": [
+            "Spyware",
+            "Troyano",
+            "Ransomware",
+            "Gusano"
+        ],
+        "correct": 2
+    },
+    {
+        "q": "¿Qué comando en Linux lista el contenido de un directorio?",
+        "options": [
+            "cd",
+            "ls",
+            "pwd",
+            "mkdir"
+        ],
+        "correct": 1
+    },
+    {
+        "q": "¿Qué significa CSS?",
+        "options": [
+            "Cascading Style Sheets",
+            "Computer Style System",
+            "Creative Styling System",
+            "Coded Style Source"
+        ],
+        "correct": 0
+    },
+    {
+        "q": "¿Cuál es una dirección IP de loopback (localhost)?",
+        "options": [
+            "192.168.1.1",
+            "127.0.0.1",
+            "10.0.0.0",
+            "255.255.255.255"
+        ],
+        "correct": 1
+    },
+    {
+        "q": "¿Qué hace un servidor DNS?",
+        "options": [
+            "Almacena bases de datos",
+            "Traduce dominios a IPs",
+            "Bloquea virus",
+            "Acelera el internet"
+        ],
+        "correct": 1
+    },
+    {
+        "q": "¿Cuál de estos no es un sistema operativo?",
+        "options": [
+            "Linux",
+            "Windows",
+            "Oracle",
+            "macOS"
+        ],
+        "correct": 2
+    },
+    {
+        "q": "¿Qué significa HTML?",
+        "options": [
+            "Hyper Text Markup Language",
+            "High Tech Modern Language",
+            "Hyperlink and Text Markup Language",
+            "Home Tool Markup Language"
+        ],
+        "correct": 0
+    },
+    {
+        "q": "¿Cuál de las siguientes es una red de área local?",
+        "options": [
+            "WAN",
+            "MAN",
+            "LAN",
+            "PAN"
+        ],
+        "correct": 2
+    },
+    {
+        "q": "¿Qué significa VPN?",
+        "options": [
+            "Virtual Private Network",
+            "Very Private Network",
+            "Visual Processing Node",
+            "Virtual Public Network"
+        ],
+        "correct": 0
+    },
+    {
+        "q": "¿Qué es el phishing?",
+        "options": [
+            "Un ataque de fuerza bruta",
+            "Un engaño para robar datos",
+            "Un tipo de firewall",
+            "Un protocolo de red"
+        ],
+        "correct": 1
+    },
+    {
+        "q": "¿Qué puerto utiliza habitualmente el protocolo SSH?",
+        "options": [
+            "21",
+            "22",
+            "80",
+            "443"
+        ],
+        "correct": 1
+    },
+    {
+        "q": "¿Qué significa la 'S' en HTTPS?",
+        "options": [
+            "System",
+            "Server",
+            "Secure",
+            "Socket"
+        ],
+        "correct": 2
+    },
+    {
+        "q": "¿Cuál de estos es un lenguaje orientado principalmente a estilos de diseño web?",
+        "options": [
+            "Python",
+            "C#",
+            "CSS",
+            "Java"
+        ],
+        "correct": 2
+    },
+    {
+        "q": "¿Qué es un ataque DDoS?",
+        "options": [
+            "Robo de contraseñas",
+            "Denegación de Servicio Distribuido",
+            "Inyección de código",
+            "Intercepción de datos"
+        ],
+        "correct": 1
+    },
+    {
+        "q": "¿Qué componente del ordenador ejecuta las instrucciones de los programas?",
+        "options": [
+            "Disco Duro",
+            "Memoria RAM",
+            "Placa Base",
+            "CPU"
+        ],
+        "correct": 3
+    },
+    {
+        "q": "¿Qué comando en Git se usa para guardar los cambios en el repositorio local?",
+        "options": [
+            "git push",
+            "git commit",
+            "git add",
+            "git pull"
+        ],
+        "correct": 1
+    },
+    {
+        "q": "¿Cuál es el sistema numérico que utiliza ceros y unos?",
+        "options": [
+            "Hexadecimal",
+            "Decimal",
+            "Binario",
+            "Octal"
+        ],
+        "correct": 2
+    },
+    {
+        "q": "¿Qué tecnología se usa comúnmente para contenedores de software?",
+        "options": [
+            "VirtualBox",
+            "VMware",
+            "Docker",
+            "Vagrant"
+        ],
+        "correct": 2
+    },
+    {
+        "q": "¿Qué significa API?",
+        "options": [
+            "Advanced Programming Interface",
+            "Application Programming Interface",
+            "Automated Process Integration",
+            "Application Process Interface"
+        ],
+        "correct": 1
+    },
+    {
+        "q": "¿Qué tipo de red a gran escala es el internet?",
+        "options": [
+            "LAN",
+            "MAN",
+            "PAN",
+            "WAN"
+        ],
+        "correct": 3
+    }
+]
