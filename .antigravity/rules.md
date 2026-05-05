@@ -25,3 +25,4 @@ Nada más abrir la aplicación, el jugador se encontrará en el menú principal,
 ## 4. Oportunidades y vidas:
 
 Los jugadores empiezan con 3 oportunidades. En caso de llegar a cero, el jugador deberá comenzar de nuevo.
+
