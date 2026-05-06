@@ -1,7 +1,7 @@
 # Product Context
 
 ## Visión del Proyecto
-Firewall Hero es un programa de tests (trivia) sobre sistemas y redes, diseñado como una experiencia gamificada estilo "autoescuela" para aprender conceptos de hardware, sistemas operativos, comandos de Linux/Windows, redes IP y contenedores.
+Firewall Hero es un programa de tests (trivia) sobre sistemas y redes, diseñado como una experiencia gamificada para aprender conceptos de hardware, sistemas operativos, comandos de Linux/Windows, redes IP y contenedores.
 
 ## Objetivos
 - Gamificar el aprendizaje de conceptos de sistemas informáticos.
