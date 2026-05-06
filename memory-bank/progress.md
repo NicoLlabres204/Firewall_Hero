@@ -11,7 +11,7 @@
 - [x] Inicialización del Memory Bank.
 - [x] Refactorización de la lógica hacia componentes puros de HTML (`components.js`).
 - [x] Refactorización de la lógica de estado e inyección de dependencias (`app.js`).
+- [x] Ampliación futura de preguntas en `trivia.json`.
 
 ## Trabajo Pendiente
-- [ ] Ampliación futura de preguntas en `trivia.json`.
 - [ ] Explorar nuevos tipos de eventos para los nodos si se requiere (siempre asegurando la estabilidad).
